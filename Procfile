@@ -1,1 +1,1 @@
-web: gunicorn onlineExam.wsgi --log-file -
+web: gunicorn bright_stitching.wsgi
