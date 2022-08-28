@@ -1,0 +1,64 @@
+{% extends 'main/base.html' %}
+{% load static %}
+<head>
+    {% block title %}
+    <title>Uniforms</title>
+    {% endblock title %}
+</head>
+
+<body>
+    {% block content %}
+    <div class="container">
+        <!--DESCRIPTIONS-->
+        <div class="description text-white rounded my-3" style="background-color:#001524;">
+            <li class="p-3">Uniforms are special clothes to show that a group of people belong together. The group of people will all be dressed in the same way ("uni" means "one", and form means "shape" one shape).The uniform will help the people to feel a team spirit so that they work well together. They may also help members of the public to know who they are.When everyone is dressed in the same clothes, it helps to create a sense of order and hierarchy. </li>
+            <li class="p-3">Uniforms speak volumes when it comes to maintaining a consistent, professional image for your employees, which is key to attracting guests and differentiating your business from the competition. Uniforms make a positive impact and are what customers expect.</li>
+            <li class="p-3">Uniforms also benefit client satisfaction by extending awareness of your company both during and outside of work hours. Employees who wear uniforms with a company’s logo and colors allow your business to become instantly recognizable by local customers.</li>
+            <li class="p-3"> Modern uniforms are most often worn by armed forces and paramilitary organizations such as police, emergency services, security guards, in some workplaces and schools and by inmates in prisons.uniforms can also help them do their jobs better. Firemen, for example, wear suits that help protect them from the heat of fires. </li> 
+        </div>
+        <div class="row item text-center" >
+            {% for i in data %}
+            <div class="col-6 col-md-4  item-col" >
+                <div class="card m-3 item-card">
+                    <a href="{% url 'uniform_details' id=i.id %}">
+                        <img src="{{i.image.url}}" class="card-img-to image-fluid" alt="{{i.name}}" >
+                    </a>
+                    <div class="card-body item-body">
+                        <h4>{{i.name|truncatechars:20}}</h4>
+                        <h3><b>AED {{i.price}}</b></h3>
+                    </div>
+                </div>
+                
+            </div>
+            {% endfor %}
+
+            <!--PAGINATOR-->
+            <div class="d-flex justify-content-center">
+                {% if item_paginator.has_other_pages %}
+                <ul class="pagination">
+                    {% if item_paginator.has_previous %}
+                        <li class="page-item"><a href="?page={{ item_paginator.previos_page_number}}" class="page-link">&laquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span class="page-link">&laquo;</span></li>
+                    {% endif %}
+
+                    {% for i in item_paginator.paginator.page_range %}
+                        {% if item_paginator.number == i %}
+                            <li class="active"><span class="page-link">{{i}}</span></li>
+                        {% else %}
+                            <li class="page-item"><a href="?page= {{i}}" class="page-link"> {{i}} </a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if item_paginator.has_next %}
+                        <li class="page-item"><a href="?page={{ item_paginator.next_page_number}}" class="page-link">&raquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span class="page-link">&raquo;</span></li>
+                    {% endif %}
+                </ul> 
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+</body>

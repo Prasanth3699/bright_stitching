@@ -1,0 +1,52 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+<head>
+    {% block title %}
+    <title>Upload Uniforms</title>
+    {% endblock title %}
+</head>
+
+<body>
+    {% block content %}
+    <div class="container ">
+        <form action="/uniforms_upload" id="myForm" method="post" class="text-center" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row d-flex justify-content-center ">
+                <div class="col-12 col-md-7">
+                    <div class="card text-white p-2" style="background-color:#001524; font-size:20px;">
+                        <div class="card-header">
+                            <h2><b>Upload Uniforms</b></h2>
+                        </div>
+                        {{ form}}
+                    </div>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-primary my-2" value="submit">
+        </form>
+    
+    </div>
+    
+    <div class="container-fluid">
+        <form action="#" method="post">
+            <div class="row">
+                {% for data in data %}
+                <div class="col-6 col-md-3">
+                    
+                        <div class="card my-2">
+                            <a href="{% url 'uniform_details' id=data.id %}">
+                            <img src="{{data.image.url}}" alt="" class="card-img-top image-fluid d-flex justify-content-center" style="max-height:17rem; min-height:17rem;"></a>
+                            <div class="card-body d-flex justify-content-between px-2">
+                                <a href="#" class="btn btn-warning btn-sm">Update</a>
+                                <a href="/uniform_delete/{{data.id}}" class="btn btn-danger btn-sm">Delete</a> 
+                            </div>
+                        </div>
+                    
+                </div>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+    
+    {% endblock content %}
+</body>

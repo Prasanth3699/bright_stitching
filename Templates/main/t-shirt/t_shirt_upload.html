@@ -1,0 +1,73 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+<head>
+    {% block title %}
+    <title>Upload T-Shirt</title>
+    {% endblock title %}
+</head>
+
+<body>
+    {% block content %}
+    <div class="container ">
+        <form action="/t_shirt_upload" id="myForm" method="post" class="text-center" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row d-flex justify-content-center ">
+                <div class="col-12 col-md-7">
+                    <div class="card text-white p-2" style="background-color:#001524; font-size:20px;">
+                        <div class="card-header">
+                            <h2><b>Upload T-Shirts</b></h2>
+                        </div>
+                        {{ form}}
+                    </div>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-primary my-2" value="submit">
+        </form>
+    
+    </div>
+    
+    <div class="container-fluid">
+        <form action="#" method="post">
+            <div class="row">
+                {% for data in data %}
+                <div class="col-6 col-md-3">
+                        <div class="card my-2">
+                            <a href="{% url 't_shirt_details' id=data.id %}">
+                            <img src="{{data.image.url}}" alt="" class="card-img-top image-fluid d-flex justify-content-center" style="max-height:17rem; min-height:17rem;"></a>
+                            <div class="card-body d-flex justify-content-between px-2">
+                                <a href="#" class="btn btn-warning btn-sm">Update</a>
+
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    Delete
+                                </button>
+                                
+                                <!-- Modal -->
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title " id="staticBackdropLabel"> Are you sure to delete</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                                        <a href="/t_shirt_delete/{{data.id}}" class="btn btn-danger btn-sm">Delete</a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                 
+                            </div>
+                        </div>
+                </div>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+    
+    {% endblock content %}
+</body>
+
