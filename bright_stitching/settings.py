@@ -28,7 +28,7 @@ STATIC_DIR = os.path.join(BASE_DIR2, 'static')
 SECRET_KEY = 'django-insecure-qgou@8ntd4sh(tppef()w!z_68$h570*p17y7jk7bp(=&%!gga'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['bright-stitching.herokuapp.com']
 
