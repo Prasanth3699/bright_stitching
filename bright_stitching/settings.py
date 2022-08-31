@@ -12,11 +12,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR2 = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,9 +27,12 @@ STATIC_DIR = os.path.join(BASE_DIR2, 'static')
 SECRET_KEY = 'django-insecure-qgou@8ntd4sh(tppef()w!z_68$h570*p17y7jk7bp(=&%!gga'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.environ.get('ON_HEROKU', '0') == '0':
+    DEBUG = True
+else:
+    DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['bright-stitching.herokuapp.com']
 
 
 # Application definition
@@ -52,6 +50,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -65,7 +64,7 @@ ROOT_URLCONF = 'bright_stitching.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR],
+        'DIRS': [os.path.join(BASE_DIR, 'Templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,19 +129,14 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     STATIC_DIR
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# cloudinary config
-cloudinary.config( 
-  cloud_name = "prasanth346", 
-  api_key = "524246131792759", 
-  api_secret = "Xe0YqMWt7X1o-TRZdxtfsfgMM7k",
-  secure = True
-)
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+
+django_heroku.settings(locals())
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
