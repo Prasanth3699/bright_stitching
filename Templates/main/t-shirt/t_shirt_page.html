@@ -1,5 +1,6 @@
 {% extends 'main/base.html' %}
 {% load static %}
+{% load cloudinary %}
 <head>
     {% block title %}
     <title>T-Shirts</title>
@@ -11,11 +12,13 @@
     <div class="container">
         <!--DESCRIPTIONS-->
         <div class="description text-white rounded my-3" style="background-color:#001524;">
-            {% comment %} <li class="p-3">Safety clothings are the items of personal properties equipments that are intended to keep the wearer safe and protectine. The PPE function like improved visibility is made up of polyster, cotton,Fluropolymer fabrics with reflective markings. These items are coloured in theroscent yellow or orange to help and distinguish human figures in many applications. </li>
-            <li class="p-3"> For chemical resistance the dress is made up inert or chemically resistant materials cotton, polyster, neoprenc, PVC, PVA and visor. By this provides the wearers of extended cuffs and a tight fit with flexible unencumbered movement. </li> 
-            <li class="p-3"> For puncture resistance thuse items will have polymer, rubber or PVC reinforcement in material joints.</li>
-            
-            <li class="p-3">For radiation protection is made up of synthetic fibers, plastic, lead and lead---- garments pressurized lead --- suits are reserved for extreme exposure</li> {% endcomment %}
+             <li class="p-3">T-shirt, or tee, is a style of fabric shirt named after the T shape of its body and sleeves. Traditionally, it has short sleeves and a round neckline, known as a crew neck, which lacks a collar. </li>
+            <li class="p-3"> T-shirts are generally made of a stretchy, light, and inexpensive fabric and are easy to clean.T-shirt has become an essential basic wardrobe item worn by people of all social classes and ages. </li> 
+            <li class="p-3"> The cotton T-shirt has remained a mainstay of sports activities because it is absorbent, quick-drying, and allows free range of movement.</li>         
+            <li class="p-3">The T-shirts' role in sports has moved beyond team identification and practical function; it is crucial to the marketing, promotion, and profitability of the sports industry.</li>  
+            <li class="p-3">T-shirts are available in a variety of colors, patterns, and styles, such as the standard crew neck and V-neck, as well as tank tops and scoop necks. T-shirt sleeves may be short or long, capped, yoked, or raglan. Additional features include pockets and decorative trim.</li>  
+            <li class="p-3">T-shirts are also popular garments on which to display one's interests, tastes, and affiliations using customized screen prints or heat transfers.</li>  
+            <li class="p-3">Printed shirts may feature political slogans, humor, art, sports, as well as famous people and places. T-shirts are also inexpensie promotional vehicles for products and special events.</li>  
         </div>
         <div class="row item text-center" >
             {% for i in data %}

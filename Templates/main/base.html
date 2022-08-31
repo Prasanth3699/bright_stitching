@@ -5,9 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "icon" href = "{% static 'img/SVG/Asset 3.svg' %}" 
+        type = "image/x-icon">
+
     {% block title %}
     <title>base</title>
     {% endblock title %}
+    
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -22,7 +26,9 @@
     <div>
         <nav class="navbar navbar-expand-sm  navbar-light shadow mb-3" >
             <div class="container-fluid">
-                <a href="#" class="navbar-brand">BRIGHT STITCHING</a>
+                <a href="#" class="navbar-brand">
+                    <img src="{% static 'img/1x/Asset 1.png' %}" alt="logo" class="w-25" style="height:60px;">
+                    BRIGHT STITCHING</a>
                 <!-- NAVBAR TOGGLE BUTTON -->
                 <button class="navbar-toggler" type="button" style="outline:none; box-shadow:none; background-color:transparent; border:none;" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                     <i class="bi bi-list"></i>
@@ -129,6 +135,9 @@
                     </div>
                     <div class="input-group mb-3">
                         <input type="number" class="form-control" required placeholder="Phone Number"  name="number">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" required placeholder="Address"  name="Address">
                     </div>
                     <div class="input-group mb-3 ">
                         <input type="text" class="form-control m-1" required placeholder="country"  name="country">

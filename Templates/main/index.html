@@ -1,5 +1,6 @@
 {% extends 'main/base.html' %}
 {% load static %}
+{% load cloudinary %}
 <head>
     {% block title %}
     <title>Bright Stitching</title>
@@ -42,7 +43,7 @@
             <a href="{% url 'uniforms_upload' %}" class="btn btn-primary my-4">uniforms_upload</a>
             <a href="{% url 't_shirt_upload' %}" class="btn btn-primary my-4">t_shirt_upload</a>
         </div>
-        <div class="container text-center shadow rounded intro" style="background-color:#fe6d73;">
+        <div class="container text-center shadow rounded intro" >
             <h1 class="intro-heading">BRIGHT STITCHING</h1>
             <p>We are the leading uniform manufacturers in UAE. We coneptualize, design & manufacture customized uniforms for corporate companies, hotels, schools, hospitals & others at Bright Stitching, no job is too big or too small.</p>
             <p>We offer single, one-off t-shirt embroidery, all the way up to multi-thousand piece embroidery. Plus, with a catalogue of over high quality garments and accessories to choose from, you'll be spoilt for choice</p>
@@ -58,11 +59,11 @@
                 <div class="col-12 col-md-6 my-2">
                     <div class="card" >
                         <a href="{% url 'safety_wear_page' %}">
-                            <img src="{% static 'img/safety_dress.jpg' %}" class="img-fluid rounded-2 w-100" style="max-height:30rem; object-fit:cover;" alt="safty dress">
+                            <img src="{% static 'img/New_folder/cap-1.jpg' %}" class="img-fluid rounded-2 w-100" style="max-height:30rem; object-fit:cover;" alt="safty dress">
                         </a>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 d-flex align-content-around flex-wrap my-2 rounded-circle product-text" style="background-color:#15616d;">
+                <div class="col-12 col-md-6 d-flex align-content-around flex-wrap my-2 rounded product-text" style="background-color:#15616d;">
                     <div >
                         <h4 class="text-white m-5">Safety clothings are the items of personal properties equipments that are intended to keep the wearer safe and protectine.</h4>
                     </div>
@@ -81,11 +82,11 @@
                 <div class="col-12 col-md-6 my-2 " >
                     <div class="card" >
                         <a href="{% url 'uniformpage' %}">
-                        <img src="{% static 'img/New_folder/uniform-1.jpg' %}" class="img-fluid rounded-2 w-100" style="max-height:30rem; object-fit:cover;" alt="safty dress">
+                        <img src="{% static 'img/New_folder/cap-1.jpg' %}" class="img-fluid rounded-2 w-100" style="max-height:30rem; object-fit:cover;" alt="safty dress">
                         </a>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 d-flex align-content-around flex-wrap rounded-circle my-2 product-text" style="background-color:#1d3557;">
+                <div class="col-12 col-md-6 d-flex align-content-around flex-wrap rounded my-2 product-text" style="background-color:#9b2226;">
                     <div>
                         <h4 class="text-white m-5">Uniforms speak volumes when it comes to maintaining a consistent, professional image for your employees, which is key to attracting guests and differentiating your business from the competition. Uniforms make a positive impact and are what customers expect.</h4>
                     </div>
@@ -108,9 +109,10 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 d-flex align-content-around flex-wrap my-2 rounded-circle product-text" style="background-color:#51526F;">
+                <div class="col-12 col-md-6 d-flex align-content-around flex-wrap my-2 rounded product-text" style="background-color:#004e89;">
                     <div class="">
-                        <p class="text-white m-5" style="min-height:150px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod itaque consectetur aliquam maiores vel natus qui quasi tempore ipsum. Assumenda ducimus quae tempore ab adipisci dolorum architecto ullam quas quaerat?</p>
+                        <h4 class="text-white m-5" style="min-height:150px;">T-shirt, or tee, is a style of fabric shirt named after the T shape of its body and sleeves. Traditionally, it has short sleeves and a round neckline, known as a crew neck, which lacks a collar. <br>
+                            T-shirts are available in a variety of colors, patterns, and styles, such as the standard crew neck and V-neck, as well as tank tops and scoop necks.</p>
                     </div>
 
                     <div class="m-auto">
@@ -131,7 +133,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 d-flex align-content-around flex-wrap my-2 rounded-circle product-text" style="background-color:#001f54;">
+                <div class="col-12 col-md-6 d-flex align-content-around flex-wrap my-2 rounded product-text" style="background-color:#001f54;">
                     <div class="">
                         <p class="text-white m-5" style="min-height:150px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod itaque consectetur aliquam maiores vel natus qui quasi tempore ipsum. Assumenda ducimus quae tempore ab adipisci dolorum architecto ullam quas quaerat?</p>
                     </div>

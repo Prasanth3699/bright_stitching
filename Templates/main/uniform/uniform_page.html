@@ -1,5 +1,6 @@
 {% extends 'main/base.html' %}
 {% load static %}
+{% load cloudinary %}
 <head>
     {% block title %}
     <title>Uniforms</title>
@@ -21,7 +22,7 @@
             <div class="col-6 col-md-4  item-col" >
                 <div class="card m-3 item-card">
                     <a href="{% url 'uniform_details' id=i.id %}">
-                        <img src="{{i.image.url}}" class="card-img-to image-fluid" alt="{{i.name}}" >
+                        <img src="{{ i.image.url}}" class="card-img-to image-fluid" alt="{{i.name}}" >
                     </a>
                     <div class="card-body item-body">
                         <h4>{{i.name|truncatechars:20}}</h4>

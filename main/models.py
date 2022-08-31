@@ -1,6 +1,5 @@
-from statistics import mode
-from xml.dom.minidom import Attr
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -9,7 +8,8 @@ class safetyWears(models.Model):
     material_name = models.CharField(max_length=50)
     price = models.PositiveIntegerField()
     description = models.TextField()
-    image = models.ImageField(upload_to="safetyWears")
+    image = CloudinaryField("safetyWears")
+    # image = CloudinaryField(upload_to="safetyWears")
 
     def __str__(self):
         return self.name
@@ -25,7 +25,7 @@ class tshirts(models.Model):
     material_name = models.CharField(max_length=50)
     price = models.PositiveIntegerField()
     description = models.TextField()
-    image = models.ImageField(upload_to="T-shirts")
+    image = CloudinaryField("T-shirts")
 
     def __str__(self):
         return self.name
@@ -39,7 +39,7 @@ class uniforms(models.Model):
     material_name = models.CharField(max_length=50)
     price = models.PositiveIntegerField()
     description = models.TextField()
-    image = models.ImageField(upload_to="Uniforms")
+    image = CloudinaryField("Uniforms")
 
     def __str__(self):
         return self.name
@@ -53,7 +53,7 @@ class caps(models.Model):
     material_name = models.CharField(max_length=50)
     price = models.PositiveIntegerField()
     description = models.TextField()
-    image = models.ImageField(upload_to="Caps")
+    image = CloudinaryField("Caps")
 
     def __str__(self):
         return self.name

@@ -72,19 +72,19 @@ input[type=number] {
 } */
 .intro{
     border-radius: 36px;
-    background: #fe6d73;
-    box-shadow:  3px 3px 16px #933f43,
-             -3px -3px 16px #ff868d !important; 
+    background: #00f5d4;
+    box-shadow:  3px 3px 10px #0bc7ae,
+             -3px -3px 10px #00f5d4 !important; 
     
 }
 .intro-heading{
     font-family: 'Exo 2', sans-serif;
     font-weight: 600; 
-    color: #ecf8f8; 
+    
 }
 .intro p{
     padding: 0px 10px;
-    color: #ecf8f8;
+    
     letter-spacing: 1px;
     font-size: 18px;
     font-weight: 600;
@@ -113,7 +113,7 @@ input[type=number] {
 .description{
     font-size: 20px;
     font-weight: 500;
-    font-family: 'Dancing Script', cursive;
+    
 }
 
 .item-card{

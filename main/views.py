@@ -176,10 +176,11 @@ def contact_form(request):
         email = request.POST.get('email')
         phone_number = request.POST.get('number')
         country = request.POST.get('country')
+        address = request.POST.get('addresss')
         city = request.POST.get('city')
         text = request.POST.get('text')
 
-        new_data = contactForm(name=name, email=email, phone_number=phone_number, country=country, city=city, text=text)
+        new_data = contactForm(name=name, email=email, phone_number=phone_number,address=address, country=country, city=city, text=text)
         new_data.save()
     else:
         pass
@@ -190,3 +191,22 @@ def contact(request):
     no = contactForm.objects.all()
     
     return render(request, 'main/admin.html', {'no':no})
+
+
+
+
+
+
+# for delete the from the cloud
+#  
+# from django.db.models.signals import pre_delete
+# import cloudinary
+# class Photo(models.Model):
+#     image = CloudinaryField('image')
+#     caption = models.CharField(max_length=100, blank=True)
+
+#     def __str__(self):
+#         return self.caption if self.caption != "" else "No caption"
+# @receiver(pre_delete, sender=Photo)
+# def photo_delete(sender, instance, **kwargs):
+#     cloudinary.uploader.destroy(instance.image.public_id)
