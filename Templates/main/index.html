@@ -10,22 +10,26 @@
 <body>
     {% block content %}
     <!-- CAROUSEL -->
-    <div id="carouselExampleCaptions" class="carousel slide carousel-fade slide my-3" data-bs-ride="carousel">
+    <div id="carouselExampleCaptions" class="carousel slide carousel-fade my-3" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{% static 'img/img1.jpg' %}" class="d-block w-100  img-fluid" alt="...">
+            <div class="carousel-item active" data-bs-interval="4000">
+                <img src="{% static 'img/banners/safetyWear.gif' %}" class="d-block w-100" alt="safetywear">
             </div>
-            <div class="carousel-item">
-                <img src="{% static 'img/img3.jpg' %}" class="d-block w-100 img-fluid" alt="...">
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="{% static 'img/banners/Uniforms.gif' %}" class="d-block w-100" alt="uniform">
             </div>
-            <div class="carousel-item">
-                <img src="{% static 'img/img2.jpg' %}" class="d-block w-100  img-fluid" alt="...">
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="{% static 'img/banners/T-shirt.gif' %}" class="d-block w-100" alt="t-shirt">
             </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="{% static 'img/banners/cap.gif' %}" class="d-block w-100" alt="cap">
+            </div> 
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -36,12 +40,13 @@
           <span class="visually-hidden">Next</span>
         </button>
     </div>
-        
+     
         <div class="text-center">
-            <a href="{% url 'adminpage' %}">Adminpage</a>
+            <a href="{% url 'safety_dress_upload' %}">safety_dress_upload</a>
             <br>
             <a href="{% url 'uniforms_upload' %}" class="btn btn-primary my-4">uniforms_upload</a>
             <a href="{% url 't_shirt_upload' %}" class="btn btn-primary my-4">t_shirt_upload</a>
+            <a href="{% url 'cap_upload' %}" class="btn btn-primary my-4">cap_upload</a>
         </div>
         <div class="container text-center shadow rounded intro" >
             <h1 class="intro-heading">BRIGHT STITCHING</h1>
@@ -59,7 +64,7 @@
                 <div class="col-12 col-md-6 my-2">
                     <div class="card" >
                         <a href="{% url 'safety_wear_page' %}">
-                            <img src="{% static 'img/New_folder/cap-1.jpg' %}" class="img-fluid rounded-2 w-100" style="max-height:30rem; object-fit:cover;" alt="safty dress">
+                            <img src="{% static 'img/safety_dress.png' %}" class="img-fluid rounded-2 w-100" style="max-height:30rem; object-fit:cover;" alt="safty dress">
                         </a>
                     </div>
                 </div>
@@ -82,7 +87,7 @@
                 <div class="col-12 col-md-6 my-2 " >
                     <div class="card" >
                         <a href="{% url 'uniformpage' %}">
-                        <img src="{% static 'img/New_folder/cap-1.jpg' %}" class="img-fluid rounded-2 w-100" style="max-height:30rem; object-fit:cover;" alt="safty dress">
+                        <img src="{% static 'img/uniform.png' %}" class="img-fluid rounded-2 w-100" style="max-height:30rem; object-fit:cover;" alt="safty dress">
                         </a>
                     </div>
                 </div>
@@ -105,13 +110,13 @@
                 <div class="col-12 col-md-6 t_shirt my-2 ">
                     <div class="card rounded-circle" >
                         <a href="{% url 'tshirtpage' %}">
-                            <img src="{% static 'img/New_folder/t-shirt-3.jpg' %}" class="img-fluid rounded-2 w-100" style="max-height:30rem; object-fit:cover;" alt="safty dress">
+                            <img src="{% static 'img/t-shirt.png' %}" class="img-fluid rounded-2 w-100" style="max-height:30rem; object-fit:cover;" alt="safty dress">
                         </a>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 d-flex align-content-around flex-wrap my-2 rounded product-text" style="background-color:#51526F;">
                     <div class="">
-                        <h4 class="text-white m-5" style="min-height:150px;">T-shirt, or tee, is a style of fabric shirt named after the T shape of its body and sleeves. Traditionally, it has short sleeves and a round neckline, known as a crew neck, which lacks a collar. <br>
+                        <h4 class="text-white m-5" style="min-height:150px;">T-shirt, or tee, is a style of fabric shirt named after the T shape of its body and sleeves. Traditionally, it has short sleeves and a round neckline, known as a crew neck, which lacks a collar. <br>
                             T-shirts are available in a variety of colors, patterns, and styles, such as the standard crew neck and V-neck, as well as tank tops and scoop necks.</p>
                     </div>
 
@@ -129,13 +134,13 @@
                 <div class="col-12 col-md-6 t_shirt my-2 ">
                     <div class="card rounded-circle" >
                         <a href="{% url 'cappage' %}">
-                            <img src="{% static 'img/New_folder/cap-1.jpg' %}" class="img-fluid rounded-2 w-100" style="max-height:30rem; object-fit:cover;" alt="safty dress">
+                            <img src="{% static 'img/cap.png' %}" class="img-fluid rounded-2 w-100" style="max-height:30rem; object-fit:cover;" alt="safty dress">
                         </a>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 d-flex align-content-around flex-wrap my-2 rounded product-text" style="background-color:#001f54;">
                     <div class="">
-                        <p class="text-white m-5" style="min-height:150px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod itaque consectetur aliquam maiores vel natus qui quasi tempore ipsum. Assumenda ducimus quae tempore ab adipisci dolorum architecto ullam quas quaerat?</p>
+                        <h4 class="text-white m-5" style="min-height:150px;">cap is a flat headgear, usually with a visor. Caps have crowns that fit very close to the head. It is a soft, flat hat with a curved part at the front which is called a peak.Its compatibility with all body types, as well as the variety of models available, also explain the success of this accessory.</h4>
                     </div>
 
                     <div class="m-auto">
@@ -144,7 +149,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     {% endblock content %}
 </body>

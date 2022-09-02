@@ -9,37 +9,17 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def home(request):
     return render(request, 'main/index.html')
 
-def admin(request):
-    
-    form = safetyform()
-
-    if request.method == "POST":
-        form = safetyform(request.POST, request.FILES)
-  
-        if form.is_valid():
-            form.save()
-            return redirect('adminpage')
-    else:
-        form = safetyform()
-  
-    img = safetyWears.objects.all()
-    return render(request, 'main/admin.html',{'form':form , 'data':img})
-
 # product page
 def safetywearpage(request):
     data = safetyWears.objects.all().order_by('id')
-
     page = request.GET.get('page', 1)
-
     paginator = Paginator(data, 20)
-
     try:
         item = paginator.page(page)
     except PageNotAnInteger:
         item = paginator.page(1)
     except EmptyPage:
         item = paginator.page(paginator.num_pages)
-
     return render(request, 'main/safety_wear/safety_wear_page.html',{'data':item ,"item_paginator":item})
 
 #safety dress view details
@@ -47,28 +27,38 @@ def safety_dress_details(request,id):
     item = safetyWears.objects.filter(id=id)
     return render(request, 'main/safety_wear/safety_dress_detail.html', {'item':item})
 
+# safety dress upload
+def safety_dress_upload(request):
+    form = safetyform()
+    if request.method == "POST":
+        form = safetyform(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('safety_dress_upload')
+    else:
+        form = safetyform()
+  
+    img = safetyWears.objects.all()
+    return render(request, 'main/safety_wear/safety_wear_upload.html',{'form':form , 'data':img})
+
 #delete the image
 def safety_wear_delete(request,id):
     data = safetyWears.objects.get(id=id)
     data.delete()
-    return redirect('adminpage')
+    return redirect('safety_dress_upload')
 
 
 # t-shirt page
 def tshirtpage(request):
     data = tshirts.objects.all().order_by('id')
-
     page = request.GET.get('page', 1)
-
     paginator = Paginator(data, 20)
-
     try:
         item = paginator.page(page)
     except PageNotAnInteger:
         item = paginator.page(1)
     except EmptyPage:
         item = paginator.page(paginator.num_pages)
-
     return render(request, 'main/t-shirt/t_shirt_page.html',{'data':item ,"item_paginator":item})
 
 # t-shirt detail page
@@ -79,7 +69,6 @@ def t_shirt_details(request,id):
 # t-shirt uploads
 def t_shirt_upload(request):
     form = tshirtform()
-
     if request.method == 'POST':
         data = tshirtform(request.POST , request.FILES)
         if data.is_valid():
@@ -87,7 +76,6 @@ def t_shirt_upload(request):
             return redirect('t_shirt_upload')
     else:
         form = tshirtform()
-
     img = tshirts.objects.all()
     return render(request, 'main/t-shirt/t_shirt_upload.html', {'form':form , 'data':img})
 
@@ -95,26 +83,20 @@ def t_shirt_upload(request):
 def t_shirt_delete(request,id):
     data = tshirts.objects.get(id=id)
     data.delete()
-    return render(request, 'main/admin.html')
+    return redirect('t_shirt_upload')
 
-
-
-#uniforms
+                          #uniforms
 # uniform page
 def uniformpage(request):
     data = uniforms.objects.select_related().order_by('id') #this select_related is for testing purpose
-
     page = request.GET.get('page', 1)
-
     paginator = Paginator(data, 20)
-
     try:
         item = paginator.page(page)
     except PageNotAnInteger:
         item = paginator.page(1)
     except EmptyPage:
         item = paginator.page(paginator.num_pages)
-
     return render(request, 'main/uniform/uniform_page.html',{'data':item ,"item_paginator":item})
 
 # uniform detail page
@@ -124,7 +106,6 @@ def uniform_details(request,id):
 
 def uniforms_upload(request):
     form = uniform_form()
-
     if request.method == 'POST':
         data = uniform_form(request.POST , request.FILES)
         if data.is_valid():
@@ -139,34 +120,42 @@ def uniforms_upload(request):
 def uniform_delete(request,id):
     data = uniforms.objects.get(id=id)
     data.delete()
-    return redirect(request, 'main/admin.html')
+    return redirect('uniforms_upload')
 
 #caps
 def cappage(request):
     data = caps.objects.all().order_by('id')
-
     page = request.GET.get('page', 1)
-
     paginator = Paginator(data, 20)
-
     try:
         item = paginator.page(page)
     except PageNotAnInteger:
         item = paginator.page(1)
     except EmptyPage:
         item = paginator.page(paginator.num_pages)
-
-    return render(request, 'main/caps&flags/caps_flags_page.html',{'data':item ,"item_paginator":item})
+    return render(request, 'main/caps_flags/caps_flags_page.html',{'data':item ,"item_paginator":item})
 
 # caps detail page
 def caps_details(request,id):
     item = caps.objects.filter(id=id)
-    return render(request, 'main/caps&flags/caps_flags_details.html', {'item':item})
+    return render(request, 'main/caps_flags/caps_flags_details.html', {'item':item})
+
+def cap_upload(request):
+    form = cap_form()
+    if request.method == 'POST':
+        data = tshirtform(request.POST , request.FILES)
+        if data.is_valid():
+            data.save()
+            return redirect('cap_upload')
+    else:
+        form = cap_form()
+    img = caps.objects.all()
+    return render(request, 'main/caps_flags/cap_upload.html', {'form':form , 'data':img})
 
 def caps_delete(request,id):
     data = safetyWears.objects.get(id=id)
     data.delete()
-    return render(request, 'main/admin.html')
+    return redirect('cap_upload')
 
 
 # CONTACT FORM
@@ -179,7 +168,6 @@ def contact_form(request):
         address = request.POST.get('addresss')
         city = request.POST.get('city')
         text = request.POST.get('text')
-
         new_data = contactForm(name=name, email=email, phone_number=phone_number,address=address, country=country, city=city, text=text)
         new_data.save()
     else:
@@ -189,7 +177,6 @@ def contact_form(request):
 
 def contact(request):
     no = contactForm.objects.all()
-    
     return render(request, 'main/admin.html', {'no':no})
 
 

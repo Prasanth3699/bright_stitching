@@ -1,0 +1,69 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load cloudinary %}
+<head>
+    {% block title %}
+    <title>Caps & Flags</title>
+    {% endblock title %}
+</head>
+
+<body>
+    {% block content %}
+    <div class="container">
+        <!--DESCRIPTIONS-->
+        <div class="description text-white rounded my-3" style="background-color:#001524;">
+            <li class="p-3">Cap is a flat headgear, usually with a visor. Caps have crowns that fit very close to the head. </li>
+            <li class="p-3"> It is a soft, flat hat with a curved part at the front which is called a peak.Its compatibility with all body types, as well as the variety of models available, also explain the success of this accessory. </li> 
+            <li class="p-3"> They are popular in casual and informal settings, and are seen in sports and fashion.</li>
+            
+            <li class="p-3">Flag is a piece of fabric (most often rectangular or quadrilateral) with a distinctive design and colours. It is used as a symbol, a signalling device, or for decoration.</li> 
+            <li class="p-3"> Flags are also used in messaging ,advertising, or for decorative purposes.</li> 
+            <li class="p-3"> A flag represents an idea, or an ideal. It is neither a mere piece of decoration, nor an object to be honoured for itself. It is honoured for what it represents.</li> 
+            <li class="p-3"> Flags have been made out of wool, silk, and cotton. With the invention of synthetic fibers, most outdoor flags are now made out of nylon or polyester. Each material has its advantages. Polyester is generally the most durable, the heaviest, and also most expensive.</li> 
+        </div>
+        <div class="row item text-center" >
+            {% for i in data %}
+            <div class="col-6 col-md-4  item-col" >
+                <div class="card m-3 item-card">
+                    <a href="{% url 'caps_details' id=i.id %}">
+                        <img src="{{i.image.url}}" class="card-img-to image-fluid" alt="{{i.name}}" >
+                    </a>
+                    <div class="card-body item-body">
+                        <h4>{{i.name|truncatechars:20}}</h4>
+                        <h3><b>AED {{i.price}}</b></h3>
+                    </div>
+                </div>
+                
+            </div>
+            {% endfor %}
+
+            <!--PAGINATOR-->
+            <div class="d-flex justify-content-center">
+                {% if item_paginator.has_other_pages %}
+                <ul class="pagination">
+                    {% if item_paginator.has_previous %}
+                        <li class="page-item"><a href="?page={{ item_paginator.previos_page_number}}" class="page-link">&laquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span class="page-link">&laquo;</span></li>
+                    {% endif %}
+
+                    {% for i in item_paginator.paginator.page_range %}
+                        {% if item_paginator.number == i %}
+                            <li class="active"><span class="page-link">{{i}}</span></li>
+                        {% else %}
+                            <li class="page-item"><a href="?page= {{i}}" class="page-link"> {{i}} </a></li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if item_paginator.has_next %}
+                        <li class="page-item"><a href="?page={{ item_paginator.next_page_number}}" class="page-link">&raquo;</a></li>
+                    {% else %}
+                        <li class="disabled"><span class="page-link">&raquo;</span></li>
+                    {% endif %}
+                </ul> 
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+</body>

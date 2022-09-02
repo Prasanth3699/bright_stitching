@@ -40,3 +40,16 @@ class uniform_form(forms.ModelForm):
             'price':forms.TextInput(attrs={'class':'form-control'}),
             'description':forms.Textarea(attrs={'class':'form-control','cols':'30','rows':'4'}),
         }
+
+class cap_form(forms.ModelForm):
+
+    class Meta:
+        model = caps
+        fields = ['name', 'material_name','price','description','image']
+
+        widgets = {
+            'name':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter product name'}),
+            'material_name':forms.TextInput(attrs={'class':'form-control'}),
+            'price':forms.TextInput(attrs={'class':'form-control'}),
+            'description':forms.Textarea(attrs={'class':'form-control','cols':'30','rows':'4'}),
+        }

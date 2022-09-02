@@ -23,14 +23,15 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('staff', views.admin, name='adminpage'),
     path('contact_form', views.contact_form, name='contact_form'),
     path('contact', views.contact, name='contact'),
 
     # SAFETY WEAR
     path('safety_wear_page', views.safetywearpage, name='safety_wear_page'),
+    path('safety_dress_upload', views.safety_dress_upload, name='safety_dress_upload'),
     path('safety_dress_detail<int:id>', views.safety_dress_details, name='safety_dress_detail'),
     path('safety_wear_delete/<id>', views.safety_wear_delete, name='safety_wear_delete'),
+
 
 
     # T-SHIRT
@@ -47,7 +48,8 @@ urlpatterns = [
 
     # CAPS FLAGS
     path('cappage', views.cappage, name='cappage'),
-    path('caps_details<int:id>', views.caps_details, name='caps_details')
+    path('caps_details<int:id>', views.caps_details, name='caps_details'),
+    path('cap_upload',views.cap_upload, name='cap_upload'),
 ]
 # path('edit_student/<str:student_id>', HodViews.edit_student,name="edit_student"),
 if settings.DEBUG:
