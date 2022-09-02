@@ -50,6 +50,7 @@ urlpatterns = [
     path('cappage', views.cappage, name='cappage'),
     path('caps_details<int:id>', views.caps_details, name='caps_details'),
     path('cap_upload',views.cap_upload, name='cap_upload'),
+    path('caps_delete/<id>', views.caps_delete, name='caps_delete'),
 ]
 # path('edit_student/<str:student_id>', HodViews.edit_student,name="edit_student"),
 if settings.DEBUG:

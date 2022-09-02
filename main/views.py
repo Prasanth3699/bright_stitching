@@ -143,7 +143,7 @@ def caps_details(request,id):
 def cap_upload(request):
     form = cap_form()
     if request.method == 'POST':
-        data = tshirtform(request.POST , request.FILES)
+        data = cap_form(request.POST , request.FILES)
         if data.is_valid():
             data.save()
             return redirect('cap_upload')
@@ -153,7 +153,7 @@ def cap_upload(request):
     return render(request, 'main/caps_flags/cap_upload.html', {'form':form , 'data':img})
 
 def caps_delete(request,id):
-    data = safetyWears.objects.get(id=id)
+    data = caps.objects.get(id=id)
     data.delete()
     return redirect('cap_upload')
 
