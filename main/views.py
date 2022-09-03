@@ -141,7 +141,7 @@ def uniforms_upload(request):
 # this is for checking uniform is available or not
 @csrf_exempt
 def check_uniform_exist(request):
-    name=request.POST.get("username")
+    name=request.POST.get("name")
     name_obj=uniforms.objects.filter(name=name).exists()
     if name_obj:
         return HttpResponse(True)
@@ -186,7 +186,7 @@ def cap_upload(request):
 # this is for checking cap name is available or not
 @csrf_exempt
 def check_cap_exist(request):
-    name=request.POST.get("username")
+    name=request.POST.get("name")
     name_obj=caps.objects.filter(name=name).exists()
     if name_obj:
         return HttpResponse(True)

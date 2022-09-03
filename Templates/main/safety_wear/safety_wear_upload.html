@@ -85,7 +85,7 @@
                     console.log(response);
                     if(response=="True"){
                         $(".name_error").remove();
-                        $("<span class='username_error' style='padding: 2px;color: red;font-size:15px;'>Name Already used</span>").insertAfter("#id_name");
+                        $("<span class='name_error' style='padding: 2px;color: red;font-size:15px;'>Name Already used</span>").insertAfter("#id_name");
                     }
                     else{
                         $(".name_error").remove();
@@ -97,7 +97,7 @@
                 })
             }
             else{
-                $(".username_error").remove();
+                $(".name_error").remove();
             }
         });
     </script>
