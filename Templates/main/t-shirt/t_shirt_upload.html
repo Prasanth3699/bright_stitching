@@ -35,6 +35,9 @@
                         <div class="card my-2">
                             <a href="{% url 't_shirt_details' id=data.id %}">
                             <img src="{{data.image.url}}" alt="" class="card-img-top image-fluid d-flex justify-content-center" style="max-height:17rem; min-height:17rem;"></a>
+                            <div class="text-center" style="font-size:20px;">
+                                {{data.name|truncatechars:20}}
+                            </div>
                             <div class="card-body d-flex justify-content-between px-2">
                                 <a href="#" class="btn btn-warning btn-sm">Update</a>
 
