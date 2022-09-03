@@ -22,7 +22,7 @@
         </div>
         <div class="row item text-center" >
             {% for i in data %}
-            <div class="col-6 col-md-4  item-col" >
+            <div class="col-10 col-md-4  item-col" >
                 <div class="card m-3 item-card">
                     <a href="{% url 't_shirt_details' id=i.id %}">
                         <img src="{{i.image.url}}" class="card-img-to image-fluid" alt="{{i.name}}" >

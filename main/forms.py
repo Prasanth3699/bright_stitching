@@ -48,7 +48,7 @@ class cap_form(forms.ModelForm):
         fields = ['name', 'material_name','price','description','image']
 
         widgets = {
-            'name':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter product name'}),
+            'name':forms.TextInput(attrs={'class':'form-control, capitalize','placeholder':'Enter product name'}),
             'material_name':forms.TextInput(attrs={'class':'form-control'}),
             'price':forms.TextInput(attrs={'class':'form-control'}),
             'description':forms.Textarea(attrs={'class':'form-control','cols':'30','rows':'4'}),

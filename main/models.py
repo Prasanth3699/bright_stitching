@@ -64,7 +64,7 @@ class caps(models.Model):
 # CONTACT FORM DETAILS
 class contactForm(models.Model):
     name = models.CharField(max_length=50)
-    email= models.EmailField(unique=True)
+    email= models.EmailField()
     phone_number = models.PositiveIntegerField(unique=True)
     address = models.CharField(max_length=50)
     country = models.CharField(max_length=30)

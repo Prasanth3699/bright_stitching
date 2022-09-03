@@ -1,10 +1,13 @@
-from os import name
+from multiprocessing import context
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.mail import send_mail
+from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
 
-# Create your views here.
 
 def home(request):
     return render(request, 'main/index.html')
@@ -37,9 +40,18 @@ def safety_dress_upload(request):
             return redirect('safety_dress_upload')
     else:
         form = safetyform()
-  
     img = safetyWears.objects.all()
     return render(request, 'main/safety_wear/safety_wear_upload.html',{'form':form , 'data':img})
+
+# this is for checking safety dress name is available or not
+@csrf_exempt
+def check_safetydress_exist(request):
+    name=request.POST.get("name")
+    name_obj=safetyWears.objects.filter(name=name).exists()
+    if name_obj:
+        return HttpResponse(True)
+    else:
+        return HttpResponse(False)
 
 #delete the image
 def safety_wear_delete(request,id):
@@ -79,6 +91,15 @@ def t_shirt_upload(request):
     img = tshirts.objects.all()
     return render(request, 'main/t-shirt/t_shirt_upload.html', {'form':form , 'data':img})
 
+# this is for checking t-shirt name is available or not
+@csrf_exempt
+def check_tshirt_exist(request):
+    name=request.POST.get("name")
+    name_obj=tshirts.objects.filter(name=name).exists()
+    if name_obj:
+        return HttpResponse(True)
+    else:
+        return HttpResponse(False)
 #delete
 def t_shirt_delete(request,id):
     data = tshirts.objects.get(id=id)
@@ -117,6 +138,16 @@ def uniforms_upload(request):
     img = uniforms.objects.all()
     return render(request, 'main/uniform/uniforms_upload.html', {'form':form , 'data':img})
 
+# this is for checking uniform is available or not
+@csrf_exempt
+def check_uniform_exist(request):
+    name=request.POST.get("username")
+    name_obj=uniforms.objects.filter(name=name).exists()
+    if name_obj:
+        return HttpResponse(True)
+    else:
+        return HttpResponse(False)
+
 def uniform_delete(request,id):
     data = uniforms.objects.get(id=id)
     data.delete()
@@ -152,11 +183,20 @@ def cap_upload(request):
     img = caps.objects.all()
     return render(request, 'main/caps_flags/cap_upload.html', {'form':form , 'data':img})
 
+# this is for checking cap name is available or not
+@csrf_exempt
+def check_cap_exist(request):
+    name=request.POST.get("username")
+    name_obj=caps.objects.filter(name=name).exists()
+    if name_obj:
+        return HttpResponse(True)
+    else:
+        return HttpResponse(False)
+    
 def caps_delete(request,id):
     data = caps.objects.get(id=id)
     data.delete()
     return redirect('cap_upload')
-
 
 # CONTACT FORM
 def contact_form(request):
@@ -165,17 +205,44 @@ def contact_form(request):
         email = request.POST.get('email')
         phone_number = request.POST.get('number')
         country = request.POST.get('country')
-        address = request.POST.get('addresss')
+        address = request.POST.get('Address')
         city = request.POST.get('city')
         text = request.POST.get('text')
         new_data = contactForm(name=name, email=email, phone_number=phone_number,address=address, country=country, city=city, text=text)
         new_data.save()
+
+        # sending mail to customer
+        send_mail(
+            'Test Mail',
+            'Hello , We got your message...',
+            'nandhatamil29@gmail.com',
+            [email],
+            fail_silently=False,
+        )
+        # get the details from the customer
+        send_mail(
+            'Customer Mail',
+            text,
+            email,
+            ['nandhatamil29@gmail.com'],
+            fail_silently=False,
+            )
+
+        context = {
+            'name':name,
+            'email':email,
+        }
+        return render(request, 'main/mail_sent_conformation.html',context)
     else:
+        # return render('home')
         pass
-    return redirect('/')
+    # context = {
+    #     'name':name
+    # }
+    return render(request, 'main/mail_sent_conformation.html',{'name':name})
 
 
-def contact(request):
+def admin(request):
     no = contactForm.objects.all()
     return render(request, 'main/admin.html', {'no':no})
 

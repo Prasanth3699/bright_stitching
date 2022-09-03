@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&family=Raleway&display=swap');
 
 body{
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Fira-sans', sans-serif !important;
     background-color: #d8f3dc;
+    /* min-height: 1000px; */
 }
+
 html{
     scroll-behavior: smooth;
 }
@@ -26,10 +28,14 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+/* body height */
+.custom-height{
+    min-height: 700px;
 }
 /* BASE PAGE contact form */
 .badge{
@@ -78,7 +84,6 @@ input[type=number] {
     
 }
 .intro-heading{
-    font-family: 'Exo 2', sans-serif;
     font-weight: 600; 
     
 }
@@ -88,20 +93,20 @@ input[type=number] {
     letter-spacing: 1px;
     font-size: 18px;
     font-weight: 600;
-    font-family: 'Exo 2', sans-serif;
 }
 
 .product{
     min-height:30rem;
 }
 .product-title{
-    font-family: 'Exo 2', sans-serif;   
     font-size: 60px;
     font-weight: 700;
     color: #065a60;   
 }
 .product-text{
     text-indent: 10px;
+    /* word-spacing: 1px; */
+    letter-spacing: 1px;
 }
 .product-text:hover{
     background-color: #001524 !important;
@@ -130,12 +135,9 @@ input[type=number] {
     border-radius: 10px;
 }
 .item-body{
-    
-    font-family: 'Exo 2', sans-serif;
     font-weight: 700;
     margin-top: -16px;
 }
-
 
 /* DRESS DETAIL VIEW */
 .dress-image > img{
@@ -159,6 +161,11 @@ input[type=number] {
     font-weight: 600;
 }
 
-
+.footer-bs{
+    position: absolute;
+    width: 100%;
+    min-height: 220px;
+    left: 0;
+}
 
 

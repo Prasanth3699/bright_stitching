@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+<head>
+    {% block title %}
+    <title>Form submitted</title>
+    {% endblock title %} 
+</head>
+<body>
+    {% block content %}
+    <div class="container text-center" style="min-height:800px;">
+        <h2>your form successfully submitted</h2>
+        {{name}}
+    </div>
+    {% endblock content %}
+</body>

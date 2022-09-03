@@ -48,5 +48,35 @@
         </form>
     </div>
     
+    <script>
+        //ajax for checking product name
+        $('#id_name').keyup(function(){
+            var name=$(this).val();
+            if(name!=""){
+                $.ajax({
+                    url:'{% url 'check_uniform_exist' %}',
+                    type:'POST',
+                    data:{name:name}
+                })
+                .done(function(response){
+                    console.log(response);
+                    if(response=="True"){
+                        $(".name_error").remove();
+                        $("<span class='username_error' style='padding: 2px;color: red;font-size:15px;'>Name Already used</span>").insertAfter("#id_name");
+                    }
+                    else{
+                        $(".name_error").remove();
+                        $("<span class='name_error' style='padding: 2px;color: green; font-size:15px;'>Name Available</span>").insertAfter("#id_name");
+                    }
+                })
+                .fail(function(){
+                    console.log("failed");
+                })
+            }
+            else{
+                $(".username_error").remove();
+            }
+        });
+    </script>
     {% endblock content %}
 </body>

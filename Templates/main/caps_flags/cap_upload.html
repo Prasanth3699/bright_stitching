@@ -35,6 +35,9 @@
                         <div class="card my-2">
                             <a href="{% url 'caps_details' id=data.id %}">
                             <img src="{{data.image.url}}" alt="" class="card-img-top image-fluid d-flex justify-content-center" style="max-height:17rem; min-height:17rem;"></a>
+                            <div class="text-center" style="font-size:20px;">
+                                {{data.name|truncatechars:20}}
+                            </div>
                             <div class="card-body d-flex justify-content-between px-2">
                                 <a href="#" class="btn btn-warning btn-sm">Update</a>
 
@@ -67,7 +70,36 @@
             </div>
         </form>
     </div>
-    
+    <script>
+         //ajax for checking product name
+        $('#id_name').keyup(function(){
+            var name=$(this).val();
+            if(name!=""){
+                $.ajax({
+                    url:'{% url 'check_cap_exist' %}',
+                    type:'POST',
+                    data:{name:name}
+                })
+                .done(function(response){
+                    console.log(response);
+                    if(response=="True"){
+                        $(".name_error").remove();
+                        $("<span class='username_error' style='padding: 2px;color: red;font-size:15px;'>Name Already used</span>").insertAfter("#id_name");
+                    }
+                    else{
+                        $(".name_error").remove();
+                        $("<span class='name_error' style='padding: 2px;color: green; font-size:15px;'>Name Available</span>").insertAfter("#id_name");
+                    }
+                })
+                .fail(function(){
+                    console.log("failed");
+                })
+            }
+            else{
+                $(".username_error").remove();
+            }
+        });
+    </script>
     {% endblock content %}
 </body>
 
