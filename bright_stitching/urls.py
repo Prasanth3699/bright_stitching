@@ -25,12 +25,14 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('contact_form', views.contact_form, name='contact_form'),
     path('contact', views.contact, name='contact'),
+    
 
     # SAFETY WEAR
     path('safety_wear_page', views.safetywearpage, name='safety_wear_page'),
     path('safety_dress_upload', views.safety_dress_upload, name='safety_dress_upload'),
     path('safety_dress_detail<int:id>', views.safety_dress_details, name='safety_dress_detail'),
     path('safety_wear_delete/<id>', views.safety_wear_delete, name='safety_wear_delete'),
+    path('check_safetydress_exist', views.check_safetydress_exist, name='check_safetydress_exist'),
 
 
 
@@ -39,18 +41,22 @@ urlpatterns = [
     path('t_shirt_upload',views.t_shirt_upload, name='t_shirt_upload'),
     path('t_shirt_details<int:id>', views.t_shirt_details, name='t_shirt_details'),
     path('t_shirt_delete/<id>', views.t_shirt_delete, name='t_shirt_delete'),
+    path('check_tshirt_exist', views.check_tshirt_exist, name='check_tshirt_exist'),
 
     # UNIFORMS
     path('uniformpage', views.uniformpage, name='uniformpage'),
     path('uniforms_upload',views.uniforms_upload, name='uniforms_upload'),
     path('uniform_details<int:id>', views.uniform_details, name='uniform_details'),
     path('uniform_delete/<id>', views.uniform_delete, name='uniform_delete'),
+    path('check_uniform_exist', views.check_uniform_exist, name='check_uniform_exist'),
 
     # CAPS FLAGS
     path('cappage', views.cappage, name='cappage'),
     path('caps_details<int:id>', views.caps_details, name='caps_details'),
     path('cap_upload',views.cap_upload, name='cap_upload'),
     path('caps_delete/<id>', views.caps_delete, name='caps_delete'),
+    path('check_cap_exist', views.check_cap_exist, name='check_cap_exist'),
+
 ]
 # path('edit_student/<str:student_id>', HodViews.edit_student,name="edit_student"),
 if settings.DEBUG:
