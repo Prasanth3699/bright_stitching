@@ -155,8 +155,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 # EMAIL SETTINGS
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587 #465 FOR LIVESERVER
-EMAIL_HOST_USER='nandhatamil29@gmail.com'
-EMAIL_HOST_PASSWORD='nuatchzvrhqabsff'
+
 EMAIL_USE_TLS=True
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
