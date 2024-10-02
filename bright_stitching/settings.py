@@ -145,8 +145,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # cloudinary config
 cloudinary.config( 
   cloud_name = "prasanth346", 
-  api_key = "524246131792759", 
-  api_secret = "Xe0YqMWt7X1o-TRZdxtfsfgMM7k",
+   
+  
   secure = True
 )
 
